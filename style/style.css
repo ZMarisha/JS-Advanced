@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.header {
+  height: 100px;
+  background: #191970;
+}
+
+.header__menu {
+  height: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cart-button {
+  height: 35px;
+  width: 90px;
+  background: #FFEBCD;
+  border-radius: 5px;
+}
+
+.goods-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 30px;
+  padding-top: 50px;
+}
+
+.card {
+  height: 200px;
+  width: 100px;
+  background: #FFEFD5;
+  text-align: center;
+}
+/*# sourceMappingURL=style.css.map */
