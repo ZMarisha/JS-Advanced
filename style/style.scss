@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.header {
+  height: 100px;
+  background: #191970;
+  
+}
+.header__menu {
+  height: inherit;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.cart-button {
+  height: 35px;
+  width: 90px;
+  background: #FFEBCD;
+  border-radius: 5px;
+}
+
+.goods-list {
+  display: flex;
+  gap: 30px;
+  padding-top: 50px;
+}
+.card {
+  height: 200px;
+  width: 100px;
+  background: #FFEFD5;
+  text-align: center;
+}
