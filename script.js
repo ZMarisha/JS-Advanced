@@ -9,17 +9,8 @@ const goods = [
   const GETGoodList = `${addressAPI}/catalogData.json`;
   const GETContentsBasket = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/getBasket.json';
 
-  function service(url, callback) {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', url );
-    xhr.send();
-    xhr.onload = () => {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        const a = JSON.parse(xhr.responseText);
-        callback(JSON.parse(xhr.response))
-        console.log(a);
-      }
-    }
+  function service(url) {
+    return fetch(url).then((res)=>res.json())
   }
 class GoodsItem {
   constructor({product_name, price}) {
@@ -37,10 +28,9 @@ class GoodsItem {
 class GoodsList {
   items = [];
   
-  fetchGoods(callback) {
-    service(GETGoodList, (data) => {
+  fetchGoods() {
+    return service(GETGoodList).then((data) => {
       this.items = data;
-      callback();
     })
   }
  
@@ -63,7 +53,7 @@ class BasketGoods {
   items = [];
 
   fetchData() {
-    service(GETContentsBasket, (data) => {
+    service(GETContentsBasket).then((data) => {
       this.items = data.contents;
     })
   }
@@ -71,8 +61,8 @@ class BasketGoods {
 
 const list = new GoodsList();
 
-list.fetchGoods(() => {
-  list.render();
+list.fetchGoods().then((write) => {
+  write = list.render();
 });
 
 list.fetchGoods(() => {
@@ -82,7 +72,8 @@ list.fetchGoods(() => {
 
 const basketGoods = new BasketGoods();
 basketGoods.fetchData();
-// const newEl = document.querySelector('.cart-button');
-// newEl.addEventListener('click', () => {
-//   console.log(basketGoods);
-// })
+
+const newEl = document.querySelector('.cart-button');
+newEl.addEventListener('click', () => {
+  console.log(basketGoods);
+})
