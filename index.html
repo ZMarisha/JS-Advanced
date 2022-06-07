@@ -11,16 +11,39 @@
   <link href="https://fonts.googleapis.com/css2?family=Festive&family=Lato:wght@300;400;700;900&family=Open+Sans:wght@300;400;600&family=Permanent+Marker&family=Qahiri&family=Rampart+One&family=Roboto:wght@400;500;900&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="header">
-    <div class="container header__menu">
-      <button class="cart-button" type = "button">Корзина</button>
+  <div id="root">
+    <header class="header">
+      <div class="container header__menu">
+        <div class="search">
+          <input class="search__input" type="text" v-model="serchValue" :title="word">
+          
+        </div>
+        <button class="cart-button" type = "button" @click="fetchData">Корзина</button>
+      </div>
+    </header>
+    <main>
+    <div class="parent container">
+      <div class="goods-list">
+        <div class="card"v-for="{product_name, price} in filterItems">
+          <h3>{{ product_name }}</h3>
+          <p>{{ price }}</p>
+        </div>
+      </div>
+      <div class="basket-list" v-show="isVisibleCart">
+        <div class="basket">
+          <div class="card" v-for="{product_name, price} in items">
+            <h3>{{ product_name }}</h3>
+            <p>{{ price }}</p>
+          </div>
+        </div>
+        <img src="image/close.svg" alt="close" @click="isVisibleCart=false">
+        <div class="total">Ваша сумма составляет: {{ sumPrice }}</div>
+      </div>
+      
     </div>
-  </header>
-  <main>
-    <div class="goods-list container">
-      <div class="card"></div>
-    </div>
-  </main>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
