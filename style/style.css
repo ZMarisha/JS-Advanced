@@ -30,6 +30,21 @@ body {
           align-items: center;
 }
 
+.search {
+  margin-right: 20px;
+  height: 35px;
+}
+
+.search__btn {
+  height: inherit;
+  width: 70px;
+}
+
+.search__input {
+  height: inherit;
+  width: 180px;
+}
+
 .cart-button {
   height: 35px;
   width: 90px;
@@ -37,18 +52,79 @@ body {
   border-radius: 5px;
 }
 
+.parent {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 50px;
+}
+
 .goods-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 30px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.goods-list .card {
+  height: 250px;
+  width: 180px;
+  background: #FFEFD5;
+  text-align: center;
   padding-top: 50px;
 }
 
-.card {
-  height: 200px;
-  width: 100px;
-  background: #FFEFD5;
+.basket-list {
+  padding-top: 50px;
+  position: absolute;
+  top: 0;
+  background: lightcyan;
+  border-radius: 10px;
+  width: 500px;
+  height: 500px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -ms-grid;
+  display: grid;
+}
+
+.basket-list .basket {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 30px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.basket-list .card {
+  height: 250px;
+  width: 180px;
+  background: #9ebe78;
   text-align: center;
+  padding-top: 50px;
+}
+
+img {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.total {
+  font-size: 20px;
+  color: #cd7979;
 }
 /*# sourceMappingURL=style.css.map */
