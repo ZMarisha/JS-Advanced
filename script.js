@@ -1,41 +1,53 @@
-  const addressAPI = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
-  const GETGoodList = `${addressAPI}/catalogData.json`;
-  const GETContentsBasket = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/getBasket.json';
+const GETGoodList = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/catalogData.json';
+const GETContentsBasket = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/getBasket.json';
 
 
-  function service(url) {
-    return fetch(url).then((res)=>res.json())
-  }
+function service(url) {
+  return fetch(url).then((res)=>res.json())
+};
 
-class BasketGoods {
-  items = [];
+Vue.component('basket-btn', {
+  template: 
+    `<button class="cart-button" type ="button" @click="$emit('btn')">
+      <slot></slot>
+    </button>`
+})
 
-  fetchData() {
-    service(GETContentsBasket).then((data) => {
-      this.items = data.contents;
-    })
-  }
-}
+Vue.component('custom-input', {
+  props: ['value'],
+  template: 
+  `<div class="search">
+    <input class="search__input" type="text" 
+      v-bind:value='value' 
+      v-on:input="$emit('input', $event.target.value)">
+  </div>`
+})
 
-// const list = new GoodsList();
+Vue.component('goods', {
+  props: ['item'],
+  template: `<div class="card">
+    <h3>{{ item.product_name }}</h3>
+    <p>{{ item.price }}</p>
+  </div>`
+});
 
-// list.fetchGoods().then((write) => {
-//   write = list.render();
-// });
+Vue.component('basket', {
+  template: 
+    `<div class="basket-list">
+      <div class="basket">
+        <slot></slot>
+      </div>
+      <img src="image/close.svg" alt="close" @click="$emit('closed')">
+      <div class="total">Ваша сумма составляет:</div></div>`, // Подскажите пожалуйста, как здесь рассчитать функцию sumPrice? Много информации перечитала, нашла через v-html, но, как я поняла, это грубо. Также пробовала вызывать две функции в одном клике @click="fetchData(); sumPrice()".
+});
 
-// list.fetchGoods(() => {
-//   list.sumPrice();
-// });
-
-
-// const basketGoods = new BasketGoods();
-// basketGoods.fetchData();
-
-// const newEl = document.querySelector('.cart-button');
-// newEl.addEventListener('click', () => {
-//   console.log(basketGoods);
-// })
-
+Vue.component('card-basket', {
+  props: ['item'],
+  template: `<div class="card">
+  <h3>{{ item.product_name }}</h3>
+  <p>{{ item.price }}</p>
+</div>`
+});
 
 var app = new Vue({
   el: '#root',
@@ -68,5 +80,8 @@ var app = new Vue({
         this.isVisibleCart = true;
       })
     },
-  }
-})
+    close() {
+      this.isVisibleCart = false;
+    },
+  },
+});

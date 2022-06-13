@@ -48,6 +48,7 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 
@@ -79,7 +80,6 @@ body {
   gap: 30px;
   justify-content: center;
 }
-  
   .card {
     height: 250px;
     width: 180px;
@@ -96,4 +96,29 @@ img {
 .total {
   font-size: 20px;
   color: #cd7979;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media (max-width: 667px) {
+  .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .goods-list {
+    gap: 15px;    
+  }
+  .basket-list {
+    width: inherit;
+    height: 350px;
+    .basket {
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+  }
+  
 }

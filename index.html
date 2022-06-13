@@ -14,33 +14,20 @@
   <div id="root">
     <header class="header">
       <div class="container header__menu">
-        <div class="search">
-          <input class="search__input" type="text" v-model="serchValue" :title="word">
-          
-        </div>
-        <button class="cart-button" type = "button" @click="fetchData">Корзина</button>
+        <custom-input v-model="serchValue" :title="word"></custom-input>
+        <basket-btn @btn="fetchData">Корзина</basket-btn>
       </div>
     </header>
     <main>
-    <div class="parent container">
-      <div class="goods-list">
-        <div class="card"v-for="{product_name, price} in filterItems">
-          <h3>{{ product_name }}</h3>
-          <p>{{ price }}</p>
+      <div class="parent container">
+        <div class="goods-list" v-if="filterItems.length>0">
+          <goods v-for="item in filterItems" :item="item" :key="item.id"></goods>
         </div>
+        <div v-else="">Нет данных</div>
+        <basket v-show="isVisibleCart" @closed="close">
+          <card-basket  v-for="item in items" :item="item" :key="item.id"></card-basket>
+        </basket>
       </div>
-      <div class="basket-list" v-show="isVisibleCart">
-        <div class="basket">
-          <div class="card" v-for="{product_name, price} in items">
-            <h3>{{ product_name }}</h3>
-            <p>{{ price }}</p>
-          </div>
-        </div>
-        <img src="image/close.svg" alt="close" @click="isVisibleCart=false">
-        <div class="total">Ваша сумма составляет: {{ sumPrice }}</div>
-      </div>
-      
-    </div>
     </main>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
