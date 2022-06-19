@@ -1,5 +1,6 @@
-const GETGoodList = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/catalogData.json';
-const GETContentsBasket = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/getBasket.json';
+const PATH = 'http://localhost:8000/'
+const GETGoodList = `${PATH}goods.json`;
+const GETContentsBasket = `${PATH}BASKET`;
 
 
 function service(url) {
@@ -27,27 +28,37 @@ Vue.component('goods', {
   props: ['item'],
   template: `<div class="card">
     <h3>{{ item.product_name }}</h3>
-    <p>{{ item.price }}</p>
+    <p>{{ item.price }} ₽</p>
+    <basket-btn>Добавить в корзину</basket-btn>
   </div>`
 });
 
-Vue.component('basket', {
+const cardBasket = Vue.component('basket', {
   template: 
     `<div class="basket-list">
-      <div class="basket">
+      <p class="basketText">Корзина</p>
+      <div class="basket container">
         <slot></slot>
       </div>
       <img src="image/close.svg" alt="close" @click="$emit('closed')">
-      <div class="total">Ваша сумма составляет:</div></div>`, // Подскажите пожалуйста, как здесь рассчитать функцию sumPrice? Много информации перечитала, нашла через v-html, но, как я поняла, это грубо. Также пробовала вызывать две функции в одном клике @click="fetchData(); sumPrice()".
+      <div class="total">Ваша сумма составляет:sumPrice</div></div>`, // Подскажите пожалуйста, как здесь рассчитать функцию sumPrice? Много информации перечитала, нашла через v-html, но, как я поняла, это грубо. Также пробовала вызывать две функции в одном клике @click="fetchData(); sumPrice()".
 });
 
 Vue.component('card-basket', {
   props: ['item'],
-  template: `<div class="card">
+  template: `<div class="cardBasket">
   <h3>{{ item.product_name }}</h3>
-  <p>{{ item.price }}</p>
-</div>`
-});
+  <div class="countEl">
+  <div class="addElement">
+  <basket-btn>-</basket-btn>
+  <p>{{ item.count }} шт.</p>
+  <basket-btn>+</basket-btn>
+  </div>
+  <basket-btn class="delete">Удалить</basket-btn>
+  </div>
+  <p>{{ item.price }} ₽</p>
+  </div>`
+})
 
 var app = new Vue({
   el: '#root',
@@ -75,8 +86,8 @@ var app = new Vue({
   },
   methods: {
     fetchData() {
-      service(GETContentsBasket).then((data) => {
-        this.items = data.contents;
+      service(GETContentsBasket).then((result) => {
+        this.items = result;
         this.isVisibleCart = true;
       })
     },

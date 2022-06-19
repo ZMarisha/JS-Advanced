@@ -3,8 +3,13 @@
   padding: 0;
 }
 
-body {
+html, body, #root {
   font-family: "Lato", sans-serif;
+  height: 100vh;
+}
+
+main {
+  height: 100%;
 }
 
 .container {
@@ -43,28 +48,18 @@ body {
 .search__input {
   height: inherit;
   width: 180px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .cart-button {
   height: 35px;
   width: 90px;
-  background: #FFEBCD;
-  border-radius: 5px;
 }
 
 .parent {
+  height: inherit;
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-top: 50px;
-  margin-bottom: 50px;
 }
 
 .goods-list {
@@ -75,6 +70,13 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 50px;
 }
 
 .goods-list .card {
@@ -85,54 +87,102 @@ body {
   padding-top: 50px;
 }
 
+.goods-list .card button {
+  margin-top: 150px;
+  height: 30px;
+  width: 150px;
+}
+
 .basket-list {
   padding-top: 50px;
   position: absolute;
   top: 0;
-  background: lightcyan;
+  background: #FFF;
   border-radius: 10px;
-  width: 500px;
-  height: 500px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  display: -ms-grid;
-  display: grid;
+  height: inherit;
+  width: 100%;
+  margin-top: -50px;
+}
+
+.basket-list .basketText {
+  margin: -30px auto 20px 4%;
+  font-weight: 600;
+  font-size: 20px;
 }
 
 .basket-list .basket {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -ms-grid;
+  display: grid;
   gap: 30px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
 }
 
-.basket-list .card {
-  height: 250px;
-  width: 180px;
-  background: #9ebe78;
+.basket-list .cardBasket {
+  height: 100px;
+  background: #c7e0e8;
   text-align: center;
-  padding-top: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-img {
+.basket-list img {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 20px;
+  right: 3.5%;
 }
 
 .total {
   font-size: 20px;
   color: #cd7979;
+  margin: 40px auto 40px 4%;
+}
+
+.countEl button {
+  height: 20px;
+  width: 50px;
+  margin-top: 10px;
+  font-size: 10px;
+}
+
+.addElement {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.addElement p {
+  margin: 10px 5px;
+}
+
+.addElement button {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
 }
 
 @media (max-width: 1024px) {
   .container {
     padding-left: 16px;
     padding-right: 16px;
+  }
+  .parent {
+    height: 100%;
+  }
+  .basket-list {
+    height: 100%;
   }
 }
 
@@ -141,16 +191,11 @@ img {
     padding-left: 8px;
     padding-right: 8px;
   }
-  .goods-list {
-    gap: 15px;
+  .parent {
+    height: auto;
   }
   .basket-list {
-    width: inherit;
-    height: 350px;
-  }
-  .basket-list .basket {
-    gap: 15px;
-    margin-bottom: 20px;
+    height: auto;
   }
 }
 /*# sourceMappingURL=style.css.map */
