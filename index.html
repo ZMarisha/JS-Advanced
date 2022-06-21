@@ -19,13 +19,13 @@
       </div>
     </header>
     <main>
-      <div class="parent container">
-        <div class="goods-list" v-if="filterItems.length>0">
-          <goods v-for="item in filterItems" :item="item" :key="item.id"></goods>
+      <div class="parent">
+        <div class="goods-list container" v-if="filterItems.length>0">
+          <goods v-for="item in filterItems" :item="item" :key="item.id_product"></goods>
         </div>
         <div v-else="">Нет данных</div>
         <basket v-show="isVisibleCart" @closed="close">
-          <card-basket  v-for="item in items" :item="item" :key="item.id"></card-basket>
+          <card-basket  v-for="item in items" :item="item" :key="item.id_product"></card-basket>
         </basket>
       </div>
     </main>
