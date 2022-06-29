@@ -5,7 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>eShop</title>
-  <link href="style/style.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Festive&family=Lato:wght@300;400;700;900&family=Open+Sans:wght@300;400;600&family=Permanent+Marker&family=Qahiri&family=Rampart+One&family=Roboto:wght@400;500;900&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
@@ -21,16 +20,15 @@
     <main>
       <div class="parent">
         <div class="goods-list container" v-if="filterItems.length>0">
-          <goods v-for="item in filterItems" :item="item" :key="item.id_product"></goods>
+          <goods v-for="item in filterItems" :item="item" :key="item.id_product" @addelement="addgoods" v-show="!isVisibleCart"></goods>
         </div>
         <div v-else="">Нет данных</div>
         <basket v-show="isVisibleCart" @closed="close">
-          <card-basket  v-for="item in items" :item="item" :key="item.id_product"></card-basket>
+          <card-basket  v-for="item in basketGoodsItems" :item="item" :key="item.id_product" @add="addgood" @minus="minusGoods"></card-basket>
         </basket>
       </div>
     </main>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-  <script src="script.js"></script>
 </body>
 </html>

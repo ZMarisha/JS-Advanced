@@ -105,7 +105,7 @@ main {
 }
 
 .basket-list .basketText {
-  margin: -30px auto 20px 4%;
+  margin: -30px auto 20px 270px;
   font-weight: 600;
   font-size: 20px;
 }
@@ -141,7 +141,7 @@ main {
 .basket-list img {
   position: absolute;
   top: 20px;
-  right: 3.5%;
+  right: 280px;
 }
 
 .total {
@@ -181,8 +181,16 @@ main {
   .parent {
     height: 100%;
   }
-  .basket-list {
+  .parent .basket-list {
     height: 100%;
+  }
+  .parent .basket-list .basketText {
+    margin: -30px auto 20px 4%;
+  }
+  .parent .basket-list img {
+    position: absolute;
+    top: 20px;
+    right: 3.5%;
   }
 }
 
@@ -192,10 +200,10 @@ main {
     padding-right: 8px;
   }
   .parent {
-    height: auto;
+    height: 100%;
   }
-  .basket-list {
-    height: auto;
+  .parent .basket-list {
+    height: 100%;
   }
 }
 /*# sourceMappingURL=style.css.map */

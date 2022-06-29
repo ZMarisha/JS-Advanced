@@ -83,7 +83,7 @@ main {
   width: 100%;
   margin-top: -50px;
   .basketText {
-    margin:-30px auto 20px 4%;
+    margin:-30px auto 20px 270px;
     font-weight: 600;
     font-size: 20px;
   }
@@ -107,7 +107,7 @@ main {
   img {
     position: absolute;
     top: 20px;
-    right: 3.5%;
+    right: 280px;
   }
 }
 .total {
@@ -143,9 +143,17 @@ main {
   }
   .parent {
     height: 100%;
-  }
-  .basket-list {
-    height: 100%;
+    .basket-list {
+      height: 100%;
+      .basketText {
+        margin:-30px auto 20px 4%;
+      }
+      img {
+        position: absolute;
+        top: 20px;
+        right: 3.5%;
+      }
+    }
   }
 }
 @media (max-width: 667px) {
@@ -154,10 +162,9 @@ main {
     padding-right: 8px;
   }
   .parent {
-    height: auto;
+    height: 100%;
+    .basket-list {
+      height: 100%;
+    }
   }
-  .basket-list {
-    height: auto;
-}
-  
 }
