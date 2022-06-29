@@ -16,5 +16,9 @@
   { "id_product": 4, 
     "product_name": "Колонки", 
     "price": 17800
+  },
+  { "id_product": 5, 
+    "product_name": "Клавиатура", 
+    "price": 5200
   }
 ]
